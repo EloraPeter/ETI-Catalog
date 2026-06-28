@@ -3,114 +3,335 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO -->
-    <title>Elora Tech Institute — Production Systems Catalog</title>
-    <meta name="description" content="A record of production systems engineered by ETI — architecture decisions, live deployments, and the reasoning behind both." />
-    <meta property="og:title" content="Elora Tech Institute — Production Systems Catalog" />
-    <meta property="og:description" content="A record of production systems engineered by ETI — architecture decisions, live deployments, and the reasoning behind both." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://elorapeter.github.io/eti-catalog" />
-    
-    <!-- Analytics -->
-    <script>
-        (function() {
-            try {
-                let views = parseInt(localStorage.getItem('eti_views') || '0', 10);
-                views += 1;
-                localStorage.setItem('eti_views', views.toString());
-            } catch(e) {}
-        })();
-    </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
-    
+    <title>ETI Institutional Output Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
     <style>
-        /* EXACT same styles as your React component */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            background-color: #0E1116;
+            margin: 0;
+            background: #0E1116;
             font-family: 'Inter', -apple-system, sans-serif;
-            color: #F5F4F0;
         }
-        .container {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 0 24px;
+        #root {
+            min-height: 100vh;
         }
-        .hero { padding: 64px 0 48px; }
-        .hero-badge {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: #3DD9C2;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // ============================================================
+        //  PROJECT DATA — exactly as you had it
+        // ============================================================
+        const projects = [{
+            num: '01',
+            status: 'live',
+            statusLabel: 'LIVE',
+            title: 'LinkHive',
+            tagline: "A production-grade short-link and bio-page platform — built to outperform link-in-bio tools that weren't designed for low-bandwidth, high-density markets.",
+            links: [
+                { label: 'github.com/EloraPeter/LinkHive', url: 'https://github.com/EloraPeter/LinkHive' },
+                { label: 'linkhive-psi.vercel.app', url: 'https://linkhive-psi.vercel.app' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: 'Most link-in-bio tools assume fast, stable connections. LinkHive is engineered from the ground up for speed and low data cost on bandwidth-constrained mobile connections, without sacrificing the analytics and customization users expect from premium tools.' },
+                { label: 'Engineering Decisions', body: 'Server-rendered bio pages via Next.js App Router eliminate client-hydration delay. PostgreSQL + Prisma model the genuinely relational structure of links, bio pages, and click events with migration discipline. Server-side redirects keep latency minimal on the critical /l/[slug] path.' },
+                { label: 'Impact', body: 'Live in production on Vercel with a working short-link engine, bio-page builder, click analytics, and QR generation — shipped, not mocked. The schema is built to extend to additional clients\u2019 link infrastructure without a rewrite.' },
+            ],
+            stack: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind CSS'],
+        }, {
+            num: '02',
+            status: 'local',
+            statusLabel: 'LOCAL — DEPLOYMENT READY',
+            title: 'Student Union Voting System',
+            tagline: 'A full-stack election platform engineered for one non-negotiable requirement: a vote count an institution can defend.',
+            links: [
+                { label: 'github.com/EloraPeter/Full-SU-Voting-System', url: 'https://github.com/EloraPeter/Full-SU-Voting-System' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: 'Most student elections run on forms or paper ballots — none of which can prevent duplicate voting or leave a verifiable trail if a result is contested. This system solves the integrity layer, not just the UI.' },
+                { label: 'Engineering Decisions', body: 'A UNIQUE(voter_id, contest_id) database constraint makes duplicate votes structurally impossible, not just application-checked. UUID primary keys close the side-channel that sequential IDs leak. A dedicated audit_logs table is decoupled from the votes table — the same separation used in financial ledgers.' },
+                { label: 'Status', body: 'Currently runs in a controlled local environment with no dependencies blocking a move to hosted infrastructure. Production deployment available on request.' },
+            ],
+            stack: ['Node.js', 'Express', 'PostgreSQL', 'Passport.js', 'bcrypt'],
+        }, {
+            num: '03',
+            status: 'local',
+            statusLabel: 'LOCAL — DEPLOYMENT READY',
+            title: 'Attendance Management System',
+            tagline: 'A full-stack attendance and enrollment platform built to replace manual roll-call and spreadsheet reconciliation for institutions.',
+            links: [
+                { label: 'github.com/EloraPeter/Smart-Attendance-System', url: 'https://github.com/EloraPeter/Smart-Attendance-System' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: "Manual attendance tracking doesn't scale past a single classroom without errors. This system handles student management, course enrollment, attendance marking, and automatic percentage calculation in one workflow." },
+                { label: 'Engineering Decisions', body: 'Built on React with PocketBase as a lightweight, self-hostable backend — a deliberate choice for institutions that need full data ownership without standing up a heavier server stack. Role separation between lecturer and admin access is enforced at the data layer, with CSV export and print-ready reporting built in from day one.' },
+                { label: 'Status', body: 'Functional in a local/demo environment with seeded credentials for evaluation. Architecture supports migration to hosted infrastructure with no structural rework.' },
+            ],
+            stack: ['React', 'TypeScript', 'PocketBase'],
+        }, {
+            num: '04',
+            status: 'live',
+            statusLabel: 'LIVE',
+            title: 'Momentum',
+            tagline: 'A gamified personal growth PWA that turns skill development into a trackable, shareable, monetizable habit system.',
+            links: [
+                { label: 'github.com/EloraPeter/Momentum', url: 'https://github.com/EloraPeter/Momentum' },
+                { label: 'elorapeter.github.io/Momentum', url: 'https://elorapeter.github.io/Momentum' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: 'Habit and skill-tracking tools usually stop at logging. Momentum adds the layer that actually sustains behavior change: gamification, visualization, and a built-in monetization path for creators.' },
+                { label: 'Engineering Decisions', body: 'Built as an installable PWA with full offline support via service worker caching — the app works without a connection, then syncs. Supabase handles auth and cross-device sync. Chart.js and GitHub-style heatmaps visualize progress; a paid unlock ("Styled to Sell Mode") demonstrates a real, working monetization layer, not just a feature list.' },
+                { label: 'Impact', body: 'Live and actively maintained across 99 commits, with a working premium-feature unlock already integrated with an external payment platform (Selar).' },
+            ],
+            stack: ['JavaScript', 'Tailwind CSS', 'Supabase', 'Chart.js', 'PWA'],
+        }, {
+            num: '05',
+            status: 'live',
+            statusLabel: 'LIVE',
+            title: 'Elora Tech Institute Platform',
+            tagline: "The core infrastructure behind ETI itself — a full-stack EdTech platform built and maintained as production software, not a course-project demo.",
+            links: [
+                { label: 'github.com/EloraPeter/Elora-Tech-Institute', url: 'https://github.com/EloraPeter/Elora-Tech-Institute' },
+                { label: 'elorapeter.github.io/Elora-Tech-Institute', url: 'https://elorapeter.github.io/Elora-Tech-Institute' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: 'ETI needed infrastructure that could grow from a single-founder teaching operation into a structured institute — without a rewrite at each stage. This is that infrastructure.' },
+                { label: 'Engineering Decisions', body: 'A separated frontend/backend/functions architecture with a dedicated data-connect layer keeps concerns isolated as the platform grows. PL/pgSQL stored procedures handle data logic at the database layer rather than purely in application code — the same discipline applied across ETI\u2019s other systems.' },
+                { label: 'Impact', body: 'Four hundred and twelve commits of active, ongoing development. This is the platform ETI\u2019s own track record runs on top of — proof the institute is built on its own engineering standard, not just teaching one.' },
+            ],
+            stack: ['JavaScript', 'HTML', 'PostgreSQL', 'PL/pgSQL'],
+        }, {
+            num: '06',
+            status: 'live',
+            statusLabel: 'LIVE — CLIENT ENGAGEMENT',
+            title: 'Data Insight Solutions',
+            tagline: 'A complete corporate web presence built and deployed for a real client — from architecture through hosting.',
+            links: [
+                { label: 'elorapeter.github.io/DIS', url: 'https://elorapeter.github.io/DIS' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: 'Data Insight Solutions Ltd. needed a professional web presence with working contact infrastructure, not a static brochure site.' },
+                { label: 'Engineering Decisions', body: 'Full multi-page site (About, Services, FAQ, legal pages) with a server-side PHP contact handler wired to email delivery — a deliberate choice to avoid third-party form dependencies. Custom domain configured via CNAME, with SEO fundamentals (sitemap, robots.txt) in place from launch.' },
+                { label: 'Engagement', body: "Full-cycle delivery: architecture, build, domain, and hosting purchased and managed on the client's behalf. Twenty-four commits of iterative refinement post-launch." },
+            ],
+            stack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+        }, {
+            num: '07',
+            status: 'live',
+            statusLabel: 'LIVE — CLIENT ENGAGEMENT',
+            title: 'Brown Builds Ent.',
+            tagline: 'A full corporate platform for a construction and civil engineering firm — covering every service line as its own dedicated experience.',
+            links: [
+                { label: 'elorapeter.github.io/brown-builds', url: 'https://elorapeter.github.io/brown-builds' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: "A construction company's web presence has to do real work: communicate scope across multiple, very different service lines (civil engineering, procurement, interior design, landscaping) to very different buyers." },
+                { label: 'Engineering Decisions', body: 'Rather than one generic "services" page, each discipline — civil engineering, material testing, project management, procurement, renovation, landscaping — got its own dedicated page with its own content strategy. A quote-request flow and consultation booking path were built directly into the site rather than routed externally.' },
+                { label: 'Engagement', body: 'Full-cycle delivery across 12 commits: architecture documentation, full service-line content build, and a working portfolio section showcasing completed projects.' },
+            ],
+            stack: ['HTML', 'CSS', 'JavaScript'],
+        }, {
+            num: '08',
+            status: 'confidential',
+            statusLabel: 'CLIENT-CONFIDENTIAL',
+            title: 'Vian Clothing Hub',
+            tagline: 'A live e-commerce web presence built and deployed for a fashion retail client under its own domain.',
+            links: [
+                { label: 'vianclothinghub.com.ng', url: 'https://www.vianclothinghub.com.ng' },
+            ],
+            sections: [
+                { label: 'Engagement', body: 'Built and deployed under a dedicated .com.ng domain for a Nigerian fashion retail client. Source is kept private per client engagement terms — standard practice for contracted client work.' },
+                { label: 'Note', body: 'Live site available for direct review at the URL above. Technical details available on request, subject to client confidentiality.' },
+            ],
+            stack: [],
+        }, {
+            num: '09',
+            status: 'confidential',
+            statusLabel: 'CLIENT-CONFIDENTIAL',
+            title: 'Banking Interface & API Integration',
+            tagline: 'Frontend architecture and API integration work for a financial services interface, delivered as part of a collaborative build.',
+            links: [],
+            sections: [
+                { label: 'Engagement', body: 'Frontend build and API integration layer for a banking-style interface, delivered as part of a multi-developer collaborative engagement. Source is held by the collaborating party per project terms.' },
+                { label: 'Note', body: 'Included to represent fintech-adjacent frontend and integration capability. Code walkthrough available in a live conversation on request.' },
+            ],
+            stack: [],
+        }];
+
+        // ============================================================
+        //  STYLES
+        // ============================================================
+        const statusStyles = {
+            live: { bg: 'rgba(61, 217, 194, 0.12)', color: '#3DD9C2', border: 'rgba(61, 217, 194, 0.4)' },
+            local: { bg: 'rgba(156, 163, 175, 0.1)', color: '#9CA3AF', border: 'rgba(156, 163, 175, 0.35)' },
+            confidential: { bg: 'rgba(245, 158, 11, 0.1)', color: '#D9A23D', border: 'rgba(217, 162, 61, 0.35)' },
+        };
+
+        // ============================================================
+        //  ANALYTICS (works with or without GA)
+        // ============================================================
+        const trackClick = (eventType, label, url) => {
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', eventType, {
+                    event_category: 'engagement',
+                    event_label: label,
+                    transport: 'beacon',
+                });
+            }
+            console.log(`[Analytics] ${eventType}: ${label} -> ${url || 'N/A'}`);
+        };
+
+        // ============================================================
+        //  COMPONENTS
+        // ============================================================
+        function StatusBadge({ status, label }) {
+            const s = statusStyles[status] || statusStyles.live;
+            return ( <
+                span style = {
+                    {
+                        fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+                        fontSize: '10px',
+                        padding: '4px 8px',
+                        borderRadius: '3px',
+                        letterSpacing: '0.5px',
+                        backgroundColor: s.bg,
+                        color: s.color,
+                        border: `1px solid ${s.border}`,
+                        whiteSpace: 'nowrap',
+                    }
+                } >
+                ● { label } <
+                /span>
+            );
         }
-        .hero-title {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
-            font-size: clamp(32px, 6vw, 52px);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -1px;
-            margin: 0 0 16px 0;
-        }
-        .hero-title span { color: #3DD9C2; }
-        .hero-desc {
-            font-size: 16px;
-            color: #9CA3AF;
-            line-height: 1.6;
-            max-width: 520px;
-            margin: 0 0 24px 0;
-        }
-        .hero-meta {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            border-top: 1px solid #2A2F38;
-            padding-top: 20px;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 11px;
-            color: #6B7280;
-        }
-        .hero-meta strong { color: #F5F4F0; }
-        
-        /* Copy button - NEW */
-        .copy-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .copy-btn {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 11px;
-            padding: 6px 14px;
-            border-radius: 3px;
-            background: transparent;
-            color: #3DD9C2;
-            border: 1px solid rgba(61, 217, 194, 0.3);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .copy-btn:hover {
-            background: rgba(61, 217, 194, 0.08);
-            border-color: rgba(61, 217, 194, 0.6);
-        }
-        .copy-btn.copied {
-            background: rgba(61, 217, 194, 0.15);
-            border-color: #3DD9C2;
-        }
-        .copy-feedback {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 11px;
-            color: #6B7280;
-        }
-        
-        /* Project card - EXACT */
+
+        function ProjectCard({ p }) {
+            const [copyStatus, setCopyStatus] = useState('📋 COPY LINK');
+
+            const handleCopyLink = () => {
+                const url = window.location.href.split('#')[0] + `#project-${p.num}`;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(() => {
+                        trackClick('copy_link', `Copy: ${p.title}`, url);
+                        setCopyStatus('✓ COPIED');
+                        setTimeout(() => setCopyStatus('📋 COPY LINK'), 2000);
+                    }).catch(() => fallbackCopy(url));
+                } else {
+                    fallbackCopy(url);
+                }
+            };
+
+            const fallbackCopy = (text) => {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-9999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    setCopyStatus('✓ COPIED');
+                    setTimeout(() => setCopyStatus('📋 COPY LINK'), 2000);
+                } catch (err) {
+                    alert('Copy failed. Please copy the URL manually.');
+                }
+                document.body.removeChild(textArea);
+            };
+
+            const handleLinkClick = (label, url) => {
+                trackClick('external_link_click', `Link: ${label} (${p.title})`, url);
+            };
+
+            return ( <
+                div id = { `project-${p.num}` }
+                style = {
+                    {
+                        backgroundColor: '#151A21',
+                        border: '1px solid #1E2329',
+                        borderRadius: '8px',
+                        padding: '32px',
+                        marginBottom: '24px',
+                    }
+                } >
+                <
+                div style = {
+                    {
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                        marginBottom: '20px',
+                        flexWrap: 'wrap',
+                        gap: '12px',
+                    }
+                } >
+                <
+                span style = {
+                    {
+                        fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+                        fontSize: '12px',
+                        color: '#6B7280',
+                    }
+                } >
+                { p.num } / 09 <
+                /span> <
+                div style = {
+                    { display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' } } >
+                <
+                StatusBadge status = { p.status }
+                label = { p.statusLabel }
+                /> <
+                button onClick = { handleCopyLink }
+                style = {
+                    {
+                        fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+                        fontSize: '10px',
+                        padding: '4px 8px',
+                        borderRadius: '3px',
+                        letterSpacing: '0.5px',
+                        backgroundColor: 'rgba(61, 217, 194, 0.08)',
+                        color: '#3DD9C2',
+                        border: '1px solid rgba(61, 217, 194, 0.25)',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        whiteSpace: 'nowrap',
+                    }
+                }
+                onMouseEnter = {
+                    (e) => {
+                        e.target.style.backgroundColor = 'rgba(61, 217, 194, 0.15)';
+                        e.target.style.borderColor = 'rgba(61, 217, 194, 0.5)';
+                    }
+                }
+                onMouseLeave = {
+                    (e) => {
+                        e.target.style.backgroundColor = 'rgba(61, 217, 194, 0.08)';
+                        e.target.style.borderColor = 'rgba(61, 217, 194, 0.25)';
+                    }
+                }
+                aria - label = { `Copy link to ${p.title} project` } >
+                { copyStatus } <
+                /button> <
+                /div> <
+                /div>
+
+                <
+                h2 style = {
+                    {
+                        fontSize: '26px',
+                        fontWeight: 700,
+               /* Project card - EXACT */
         .project-card {
             background-color: #151A21;
             border: 1px solid #1E2329;
