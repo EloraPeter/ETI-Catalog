@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elora Tech Institute — Institutional Output Catalog</title>
     <meta name="description" content="A record of production systems engineered by Elora Tech Institute — architecture decisions, live deployments, and the reasoning behind both.">
-    <meta name="keywords" content="Elora Tech Institute, software engineering, full-stack, production systems, Next.js, PostgreSQL, portfolio, Nigeria">
+    <meta name="keywords" content="Elora Tech Institute, software engineering, full-stack, production systems, Next.js, PostgreSQL, portfolio, Nigeria, LinkHive, Student Union Voting System, Attendance Management System, Momentum, EdTech">
     <meta name="author" content="Elora Tech Ltd">
+    <meta name="robots" content="index, follow">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Elora Tech Institute — Institutional Output Catalog">
@@ -14,53 +15,18 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://elorapeter.github.io/Elora-Tech-Institute">
     <meta property="og:image" content="https://elorapeter.github.io/Elora-Tech-Institute/preview.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Elora Tech Institute Institutional Output Catalog Preview">
     <meta property="og:site_name" content="Elora Tech Institute">
-    <meta property="og:locale" content="en_US">
+    <meta property="og:locale" content="en_NG">
     
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Elora Tech Institute — Institutional Output Catalog">
     <meta name="twitter:description" content="Production-grade systems built by ETI. Real deployments, deliberate architecture, honest status.">
     <meta name="twitter:image" content="https://elorapeter.github.io/Elora-Tech-Institute/preview.jpg">
-    <meta name="twitter:site" content="@eloratech">
     
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Elora Tech Institute — Institutional Output Catalog",
-      "description": "A record of production systems engineered by Elora Tech Institute — architecture decisions, live deployments, and the reasoning behind both.",
-      "url": "https://elorapeter.github.io/Elora-Tech-Institute",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Elora Tech Ltd",
-        "legalName": "Elora Tech Ltd",
-        "taxID": "RC 9487007",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Asaba",
-          "addressRegion": "Delta State",
-          "addressCountry": "Nigeria"
-        }
-      },
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "LinkHive"},
-          {"@type": "ListItem", "position": 2, "name": "Student Union Voting System"},
-          {"@type": "ListItem", "position": 3, "name": "Attendance Management System"},
-          {"@type": "ListItem", "position": 4, "name": "Momentum"},
-          {"@type": "ListItem", "position": 5, "name": "Elora Tech Institute Platform"},
-          {"@type": "ListItem", "position": 6, "name": "Data Insight Solutions"},
-          {"@type": "ListItem", "position": 7, "name": "Brown Builds Ent."},
-          {"@type": "ListItem", "position": 8, "name": "Vian Clothing Hub"},
-          {"@type": "ListItem", "position": 9, "name": "Banking Interface & API Integration"}
-        ]
-      }
-    }
-    </script>
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://elorapeter.github.io/Elora-Tech-Institute">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
@@ -85,6 +51,7 @@
             border-radius: 8px;
             padding: 32px;
             margin-bottom: 24px;
+            position: relative;
         }
         
         .status-badge {
@@ -97,33 +64,23 @@
         }
         
         .copy-btn {
-            background: transparent;
-            color: #9CA3AF;
-            border: none;
-            padding: 6px 8px;
+            background: #1E2329;
+            color: #3DD9C2;
+            border: 1px solid #3DD9C2;
+            padding: 8px 12px;
             border-radius: 6px;
-            font-size: 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.2s;
-            line-height: 1;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
+            gap: 6px;
         }
         
         .copy-btn:hover {
-            background: #1E2329;
-            color: #3DD9C2;
-        }
-        
-        .copy-btn.copied {
-            color: #3DD9C2;
-        }
-        
-        .copy-btn svg {
-            width: 20px;
-            height: 20px;
-            display: block;
+            background: #3DD9C2;
+            color: #0E1116;
         }
         
         a {
@@ -152,9 +109,6 @@
                         A record of production systems engineered by ETI — architecture decisions, live deployments, and the reasoning behind both.
                     </p>
                 </div>
-                
-                <!-- Hero copy button removed per request -->
-                
             </div>
             
             <div style="display: flex; gap: 24px; flex-wrap: wrap; border-top: 1px solid #2A2F38; padding-top: 20px; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; color: #6B7280;">
@@ -168,156 +122,6 @@
 
         <!-- PROJECTS will be injected here by JS -->
         <div id="projects" style="padding: 0 24px 32px;"></div>
-
-        <!-- CLOSING / CTA -->
-        <div style="padding: 48px 24px 80px;">
-            <div style="background-color: #151A21; border: 1px solid #1E2329; border-radius: 8px; padding: 40px 32px;">
-                <div style="font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; color: #3DD9C2; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;">
-                    Let's Talk
-                </div>
-                <h3 style="font-size: 24px; font-weight: 700; line-height: 1.3; margin: 0 0 16px 0; max-width: 480px;">
-                    Most companies lose efficiency to broken internal tools. We replace them with infrastructure like this.
-                </h3>
-                <p style="font-size: 14px; color: #9CA3AF; line-height: 1.7; max-width: 480px; margin: 0 0 28px 0;">
-                    Every system in this catalog is real, deployed or deployment-ready, and built on the same engineering standard: production-grade stack, deliberate architecture decisions, and an honest account of what's live versus what's local. We'd like to review your current systems and design a specialized roadmap.
-                </p>
-                <div style="display: flex; gap: 32px; flex-wrap: wrap; border-top: 1px solid #2A2F38; padding-top: 20px; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px;">
-                    <div>
-                        <div style="color: #6B7280; margin-bottom: 4px; font-size: 10px;">TELEGRAM</div>
-                        <a href="https://t.me/eloratechinstitute" target="_blank" rel="noopener noreferrer">t.me/eloratechinstitute</a>
-                    </div>
-                    <div>
-                        <div style="color: #6B7280; margin-bottom: 4px; font-size: 10px;">GITHUB</div>
-                        <a href="https://github.com/EloraPeter" target="_blank" rel="noopener noreferrer">github.com/EloraPeter</a>
-                    </div>
-                    <div>
-                        <div style="color: #6B7280; margin-bottom: 4px; font-size: 10px;">LINKEDIN</div>
-                        <a href="https://www.linkedin.com/in/florence-ofuokwu-908129316" target="_blank" rel="noopener noreferrer">florence-ofuokwu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const projects = [
-          {
-            num: '01',
-            status: 'live',
-            statusLabel: 'LIVE',
-            title: 'LinkHive',
-            tagline: "A production-grade short-link and bio-page platform — built to outperform link-in-bio tools that weren't designed for low-bandwidth, high-density markets.",
-            links: [
-              { label: 'github.com/EloraPeter/LinkHive', url: 'https://github.com/EloraPeter/LinkHive' },
-              { label: 'linkhive-psi.vercel.app', url: 'https://linkhive-psi.vercel.app' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: 'Most link-in-bio tools assume fast, stable connections. LinkHive is engineered from the ground up for speed and low data cost on bandwidth-constrained mobile connections, without sacrificing the analytics and customization users expect from premium tools.' },
-              { label: 'Engineering Decisions', body: 'Server-rendered bio pages via Next.js App Router eliminate client-hydration delay. PostgreSQL + Prisma model the genuinely relational structure of links, bio pages, and click events with migration discipline. Server-side redirects keep latency minimal on the critical /l/[slug] path.' },
-              { label: 'Impact', body: 'Live in production on Vercel with a working short-link engine, bio-page builder, click analytics, and QR generation — shipped, not mocked. The schema is built to extend to additional clients’ link infrastructure without a rewrite.' },
-            ],
-            stack: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind CSS'],
-          },
-          {
-            num: '02',
-            status: 'local',
-            statusLabel: 'LOCAL — DEPLOYMENT READY',
-            title: 'Student Union Voting System',
-            tagline: 'A full-stack election platform engineered for one non-negotiable requirement: a vote count an institution can defend.',
-            links: [
-              { label: 'github.com/EloraPeter/Full-SU-Voting-System', url: 'https://github.com/EloraPeter/Full-SU-Voting-System' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: 'Most student elections run on forms or paper ballots — none of which can prevent duplicate voting or leave a verifiable trail if a result is contested. This system solves the integrity layer, not just the UI.' },
-              { label: 'Engineering Decisions', body: 'A UNIQUE(voter_id, contest_id) database constraint makes duplicate votes structurally impossible, not just application-checked. UUID primary keys close the side-channel that sequential IDs leak. A dedicated audit_logs table is decoupled from the votes table — the same separation used in financial ledgers.' },
-              { label: 'Status', body: 'Currently runs in a controlled local environment with no dependencies blocking a move to hosted infrastructure. Production deployment available on request.' },
-            ],
-            stack: ['Node.js', 'Express', 'PostgreSQL', 'Passport.js', 'bcrypt'],
-          },
-          {
-            num: '03',
-            status: 'local',
-            statusLabel: 'LOCAL — DEPLOYMENT READY',
-            title: 'Attendance Management System',
-            tagline: 'A full-stack attendance and enrollment platform built to replace manual roll-call and spreadsheet reconciliation for institutions.',
-            links: [
-              { label: 'github.com/EloraPeter/Smart-Attendance-System', url: 'https://github.com/EloraPeter/Smart-Attendance-System' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: "Manual attendance tracking doesn't scale past a single classroom without errors. This system handles student management, course enrollment, attendance marking, and automatic percentage calculation in one workflow." },
-              { label: 'Engineering Decisions', body: 'Built on React with PocketBase as a lightweight, self-hostable backend — a deliberate choice for institutions that need full data ownership without standing up a heavier server stack. Role separation between lecturer and admin access is enforced at the data layer, with CSV export and print-ready reporting built in from day one.' },
-              { label: 'Status', body: 'Functional in a local/demo environment with seeded credentials for evaluation. Architecture supports migration to hosted infrastructure with no structural rework.' },
-            ],
-            stack: ['React', 'TypeScript', 'PocketBase'],
-          },
-          {
-            num: '04',
-            status: 'live',
-            statusLabel: 'LIVE',
-            title: 'Momentum',
-            tagline: 'A gamified personal growth PWA that turns skill development into a trackable, shareable, monetizable habit system.',
-            links: [
-              { label: 'github.com/EloraPeter/Momentum', url: 'https://github.com/EloraPeter/Momentum' },
-              { label: 'elorapeter.github.io/Momentum', url: 'https://elorapeter.github.io/Momentum' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: 'Habit and skill-tracking tools usually stop at logging. Momentum adds the layer that actually sustains behavior change: gamification, visualization, and a built-in monetization path for creators.' },
-              { label: 'Engineering Decisions', body: 'Built as an installable PWA with full offline support via service worker caching — the app works without a connection, then syncs. Supabase handles auth and cross-device sync. Chart.js and GitHub-style heatmaps visualize progress; a paid unlock ("Styled to Sell Mode") demonstrates a real, working monetization layer, not just a feature list.' },
-              { label: 'Impact', body: 'Live and actively maintained across 99 commits, with a working premium-feature unlock already integrated with an external payment platform (Selar).' },
-            ],
-            stack: ['JavaScript', 'Tailwind CSS', 'Supabase', 'Chart.js', 'PWA'],
-          },
-          {
-            num: '05',
-            status: 'live',
-            statusLabel: 'LIVE',
-            title: 'Elora Tech Institute Platform',
-            tagline: "The core infrastructure behind ETI itself — a full-stack EdTech platform built and maintained as production software, not a course-project demo.",
-            links: [
-              { label: 'github.com/EloraPeter/Elora-Tech-Institute', url: 'https://github.com/EloraPeter/Elora-Tech-Institute' },
-              { label: 'elorapeter.github.io/Elora-Tech-Institute', url: 'https://elorapeter.github.io/Elora-Tech-Institute' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: 'ETI needed infrastructure that could grow from a single-founder teaching operation into a structured institute — without a rewrite at each stage. This is that infrastructure.' },
-              { label: 'Engineering Decisions', body: 'A separated frontend/backend/functions architecture with a dedicated data-connect layer keeps concerns isolated as the platform grows. PL/pgSQL stored procedures handle data logic at the database layer rather than purely in application code — the same discipline applied across ETI’s other systems.' },
-              { label: 'Impact', body: 'Four hundred and twelve commits of active, ongoing development. This is the platform ETI’s own track record runs on top of — proof the institute is built on its own engineering standard, not just teaching one.' },
-            ],
-            stack: ['JavaScript', 'HTML', 'PostgreSQL', 'PL/pgSQL'],
-          },
-          {
-            num: '06',
-            status: 'live',
-            statusLabel: 'LIVE — CLIENT ENGAGEMENT',
-            title: 'Data Insight Solutions',
-            tagline: 'A complete corporate web presence built and deployed for a real client — from architecture through hosting.',
-            links: [
-              { label: 'elorapeter.github.io/DIS', url: 'https://elorapeter.github.io/DIS' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: 'Data Insight Solutions Ltd. needed a professional web presence with working contact infrastructure, not a static brochure site.' },
-              { label: 'Engineering Decisions', body: 'Full multi-page site (About, Services, FAQ, legal pages) with a server-side PHP contact handler wired to email delivery — a deliberate choice to avoid third-party form dependencies. Custom domain configured via CNAME, with SEO fundamentals (sitemap, robots.txt) in place from launch.' },
-              { label: 'Engagement', body: "Full-cycle delivery: architecture, build, domain, and hosting purchased and managed on the client's behalf. Twenty-four commits of iterative refinement post-launch." },
-            ],
-            stack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
-          },
-          {
-            num: '07',
-            status: 'live',
-            statusLabel: 'LIVE — CLIENT ENGAGEMENT',
-            title: 'Brown Builds Ent.',
-            tagline: 'A full corporate platform for a construction and civil engineering firm — covering every service line as its own dedicated experience.',
-            links: [
-              { label: 'elorapeter.github.io/brown-builds', url: 'https://elorapeter.github.io/brown-builds' },
-            ],
-            sections: [
-              { label: 'Context & Scale', body: "A construction company's web presence has to do real work: communicate scope across multiple, very different service lines (civil engineering, procurement, interior design, landscaping) to very different buyers." },
-              { label: 'Engineering Decisions', body: 'Rather than one generic "services" page, each discipline — civil engineering, material testing, project management, procurement, renovation, landscaping — got its own dedicated page with its own content strategy. A quote-request flow and consultation booking path were built directly into the site rather than routed externally.' },
-              { label: 'Engagement', body: 'Full-cycle delivery across 12 commits: architecture documentation, full service-line content build, and a working portfolio section showcasing completed projects.' },
-            ],
-            stack: ['HTML', 'CSS', 'JavaScript'],
-          },
-          {
-                 <div id="projects" style="padding: 0 24px 32px;"></div>
 
         <!-- CLOSING / CTA -->
         <div style="padding: 48px 24px 80px;">
@@ -502,14 +306,11 @@
           confidential: { bg: 'rgba(245, 158, 11, 0.1)', color: '#D9A23D', border: 'rgba(217, 162, 61, 0.35)' },
         };
 
-        function copyPageLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                const btn = document.querySelector('.copy-btn');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '✅ Copied!';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                }, 2000);
+        function copyProjectLink(num) {
+            const url = `\( {window.location.href}#project- \){num}`;
+            navigator.clipboard.writeText(url).then(() => {
+                // Optional: could add temporary feedback on button if needed
+                console.log(`✅ Copied link for project ${num}`);
             }).catch(err => {
                 console.error('Failed to copy: ', err);
             });
@@ -560,14 +361,19 @@
                 }
                 
                 html += `
-                    <div class="project-card">
+                    <div id="project-${p.num}" class="project-card">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
                             <span style="font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 12px; color: #6B7280;">
                                 ${p.num} / 09
                             </span>
-                            <span class="status-badge" style="background-color: ${status.bg}; color: ${status.color}; border: 1px solid ${status.border};">
-                                ● ${p.statusLabel}
-                            </span>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <button onclick="copyProjectLink('${p.num}')" class="copy-btn" title="Copy direct link to this project">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                </button>
+                                <span class="status-badge" style="background-color: ${status.bg}; color: ${status.color}; border: 1px solid ${status.border};">
+                                    ● ${p.statusLabel}
+                                </span>
+                            </div>
                         </div>
                         
                         <h2 style="font-size: 26px; font-weight: 700; color: #F5F4F0; margin: 0 0 10px 0; line-height: 1.15;">${p.title}</h2>
@@ -588,10 +394,23 @@
             
             // Simple analytics tracking (page view)
             console.log('%c✅ ETI Catalog loaded successfully', 'color: #3DD9C2; font-family: monospace;');
-            
-            // Optional: You can add Google Analytics or Plausible here later
-            // Example GA4: gtag('event', 'page_view', { page_title: document.title });
         };
+    </script>
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Elora Tech Institute — Institutional Output Catalog",
+      "description": "A record of production systems engineered by Elora Tech Institute — architecture decisions, live deployments, and the reasoning behind both.",
+      "url": "https://elorapeter.github.io/Elora-Tech-Institute",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Elora Tech Ltd",
+        "url": "https://elorapeter.github.io/Elora-Tech-Institute"
+      }
+    }
     </script>
 </body>
 </html>
