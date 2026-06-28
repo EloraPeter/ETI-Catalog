@@ -307,7 +307,7 @@
         };
 
         function copyProjectLink(num) {
-            const url = `\( {window.location.href}#project- \){num}`;
+            const url = `${window.location.href}#project-${num}`;
             navigator.clipboard.writeText(url).then(() => {
                 // Optional: could add temporary feedback on button if needed
                 console.log(`✅ Copied link for project ${num}`);
