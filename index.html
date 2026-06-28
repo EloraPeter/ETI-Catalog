@@ -12,27 +12,282 @@
             box-sizing: border-box;
         }
         body {
-            margin: 0;
             background: #0E1116;
             font-family: 'Inter', -apple-system, sans-serif;
+            color: #F5F4F0;
+            padding: 64px 24px 80px;
         }
-        #root {
-            min-height: 100vh;
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .badge {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .badge-live {
+            background: rgba(61, 217, 194, 0.12);
+            color: #3DD9C2;
+            border: 1px solid rgba(61, 217, 194, 0.4);
+        }
+        .badge-local {
+            background: rgba(156, 163, 175, 0.1);
+            color: #9CA3AF;
+            border: 1px solid rgba(156, 163, 175, 0.35);
+        }
+        .badge-confidential {
+            background: rgba(245, 158, 11, 0.1);
+            color: #D9A23D;
+            border: 1px solid rgba(217, 162, 61, 0.35);
+        }
+        .project-card {
+            background: #151A21;
+            border: 1px solid #1E2329;
+            border-radius: 8px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .project-number {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 12px;
+            color: #6B7280;
+        }
+        .project-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .copy-btn {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            background: rgba(61, 217, 194, 0.08);
+            color: #3DD9C2;
+            border: 1px solid rgba(61, 217, 194, 0.25);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background: rgba(61, 217, 194, 0.15);
+            border-color: rgba(61, 217, 194, 0.5);
+        }
+        .project-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #F5F4F0;
+            margin: 0 0 10px 0;
+            line-height: 1.15;
+        }
+        .project-tagline {
+            font-size: 15px;
+            color: #9CA3AF;
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 0 18px 0;
+        }
+        .project-links {
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .project-links a {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 12px;
+            color: #3DD9C2;
+            text-decoration: none;
+        }
+        .project-links .sep {
+            color: #6B7280;
+            font-size: 12px;
+            margin: 0 4px;
+        }
+        .section-block {
+            margin-bottom: 18px;
+        }
+        .section-label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            color: #3DD9C2;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .section-body {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #D1D5DB;
+            margin: 0;
+        }
+        .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #1E2329;
+        }
+        .stack-tag {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            color: #9CA3AF;
+            background: #0E1116;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+        .hero {
+            padding: 0 0 48px 0;
+        }
+        .hero-label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #3DD9C2;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-size: clamp(32px, 6vw, 52px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            margin: 0 0 16px 0;
+        }
+        .hero h1 span {
+            color: #3DD9C2;
+        }
+        .hero p {
+            font-size: 16px;
+            color: #9CA3AF;
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 0 24px 0;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            border-top: 1px solid #2A2F38;
+            padding-top: 20px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            color: #6B7280;
+        }
+        .hero-meta strong {
+            color: #F5F4F0;
+        }
+        .cta-box {
+            background: #151A21;
+            border: 1px solid #1E2329;
+            border-radius: 8px;
+            padding: 40px 32px;
+            margin-top: 24px;
+        }
+        .cta-label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            color: #3DD9C2;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .cta-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0 0 16px 0;
+            max-width: 480px;
+        }
+        .cta-text {
+            font-size: 14px;
+            color: #9CA3AF;
+            line-height: 1.7;
+            max-width: 480px;
+            margin: 0 0 28px 0;
+        }
+        .cta-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            border-top: 1px solid #2A2F38;
+            padding-top: 20px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .cta-links a {
+            color: #F5F4F0;
+            text-decoration: none;
+        }
+        .cta-links .label {
+            color: #6B7280;
+            margin-bottom: 4px;
+            font-size: 10px;
         }
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div class="container">
 
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-label">Institutional Output Catalog</div>
+            <h1>Elora Tech Institute<span>.</span></h1>
+            <p>A record of production systems engineered by ETI — architecture decisions, live deployments, and the reasoning behind both.</p>
+            <div class="hero-meta">
+                <span><strong>Elora Tech Ltd</strong></span>
+                <span>RC 9487007</span>
+                <span>CAC Registered</span>
+                <span>Asaba, Delta State, Nigeria</span>
+                <span>9 systems documented</span>
+            </div>
+        </div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+        <!-- PROJECTS -->
+        <div id="projects"></div>
 
+        <!-- CTA -->
+        <div class="cta-box">
+            <div class="cta-label">Let's Talk</div>
+            <div class="cta-title">Most companies lose efficiency to broken internal tools. We replace them with infrastructure like this.</div>
+            <p class="cta-text">Every system in this catalog is real, deployed or deployment-ready, and built on the same engineering standard: production-grade stack, deliberate architecture decisions, and an honest account of what's live versus what's local. We'd like to review your current systems and design a specialized roadmap.</p>
+            <div class="cta-links">
+                <div>
+                    <div class="label">TELEGRAM</div>
+                    <a href="https://t.me/eloratechinstitute" target="_blank" rel="noopener">t.me/eloratechinstitute</a>
+                </div>
+                <div>
+                    <div class="label">GITHUB</div>
+                    <a href="https://github.com/EloraPeter" target="_blank" rel="noopener">github.com/EloraPeter</a>
+                </div>
+                <div>
+                    <div class="label">LINKEDIN</div>
+                    <a href="https://www.linkedin.com/in/florence-ofuokwu-908129316" target="_blank" rel="noopener">florence-ofuokwu</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
         // ============================================================
-        //  PROJECT DATA — exactly as you had it
+        //  DATA — All 9 projects
         // ============================================================
         const projects = [{
             num: '01',
@@ -111,6 +366,43 @@
                 { label: 'Engineering Decisions', body: 'A separated frontend/backend/functions architecture with a dedicated data-connect layer keeps concerns isolated as the platform grows. PL/pgSQL stored procedures handle data logic at the database layer rather than purely in application code — the same discipline applied across ETI\u2019s other systems.' },
                 { label: 'Impact', body: 'Four hundred and twelve commits of active, ongoing development. This is the platform ETI\u2019s own track record runs on top of — proof the institute is built on its own engineering standard, not just teaching one.' },
             ],
+            stack: ['JavaScript', 'HTML', 'PostgreSQL', 'PL/pgSQL'],
+        }, {
+            num: '06',
+            status: 'live',
+            statusLabel: 'LIVE — CLIENT ENGAGEMENT',
+            title: 'Data Insight Solutions',
+            tagline: 'A complete corporate web presence built and deployed for a real client — from architecture through hosting.',
+            links: [
+                { label: 'elorapeter.github.io/DIS', url: 'https://elorapeter.github.io/DIS' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: 'Data Insight Solutions Ltd. needed a professional web presence with working contact infrastructure, not a static brochure site.' },
+                { label: 'Engineering Decisions', body: 'Full multi-page site (About, Services, FAQ, legal pages) with a server-side PHP contact handler wired to email delivery — a deliberate choice to avoid third-party form dependencies. Custom domain configured via CNAME, with SEO fundamentals (sitemap, robots.txt) in place from launch.' },
+                { label: 'Engagement', body: "Full-cycle delivery: architecture, build, domain, and hosting purchased and managed on the client's behalf. Twenty-four commits of iterative refinement post-launch." },
+            ],
+            stack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+        }, {
+            num: '07',
+            status: 'live',
+            statusLabel: 'LIVE — CLIENT ENGAGEMENT',
+            title: 'Brown Builds Ent.',
+            tagline: 'A full corporate platform for a construction and civil engineering firm — covering every service line as its own dedicated experience.',
+            links: [
+                { label: 'elorapeter.github.io/brown-builds', url: 'https://elorapeter.github.io/brown-builds' },
+            ],
+            sections: [
+                { label: 'Context & Scale', body: "A construction company's web presence has to do real work: communicate scope across multiple, very different service lines (civil engineering, procurement, interior design, landscaping) to very different buyers." },
+                { label: 'Engineering Decisions', body: 'Rather than one generic "services" page, each discipline — civil engineering, material testing, project management, procurement, renovation, landscaping — got its own dedicated page with its own content strategy. A quote-request flow and consultation booking path were built directly into the site rather than routed externally.' },
+                { label: 'Engagement', body: 'Full-cycle delivery across 12 commits: architecture documentation, full service-line content build, and a working portfolio section showcasing completed projects.' },
+            ],
+            stack: ['HTML', 'CSS', 'JavaScript'],
+        }, {
+            num: '08',
+            status: 'confidential',
+            statusLabel: 'CLIENT-CONFIDENTIAL',
+            title: 'Vian Clothing Hub',
+            tagline: 'A live e-commerce web presence built and deployed for a fashion retail client under its o            ],
             stack: ['JavaScript', 'HTML', 'PostgreSQL', 'PL/pgSQL'],
         }, {
             num: '06',
