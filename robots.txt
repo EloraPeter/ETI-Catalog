@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://elorapeter.github.io/ETI-Catalog/sitemap.xml
